@@ -48,11 +48,11 @@ const UrlList = forwardRef((props, ref) => {
               <div className="font-semibold text-base text-gray-900 mb-1">{url.slug}</div>
               <a
                 className="text-blue-600 text-base break-all hover:underline"
-                href={`${window.location.origin}/${url.slug}`}
+                href={url.fullUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {window.location.origin}/{url.slug}
+                {url.fullUrl}
               </a>
               <div className="flex gap-5 items-center text-gray-500 text-sm mt-1">
                 <span className="flex items-center gap-1">
@@ -67,7 +67,7 @@ const UrlList = forwardRef((props, ref) => {
               <div className="absolute top-6 right-8 flex gap-2">
                 <button
                   title="Copy short URL"
-                  onClick={() => handleCopy(`${window.location.origin}/${url.slug}`)}
+                  onClick={() => handleCopy(url.fullUrl)}
                   className="bg-gray-100 text-gray-800 border border-gray-200 rounded px-3 py-1.5 text-sm font-medium cursor-pointer hover:bg-gray-200 transition"
                 >
                   Copiar
