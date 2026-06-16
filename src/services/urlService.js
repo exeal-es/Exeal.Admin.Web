@@ -1,6 +1,8 @@
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export async function createShortUrl(token, destinationUrl, customSlug) {
   const response = await fetch(
-    `${process.env.REACT_APP_API_BASE_URL}/api/shorturl`,
+    `${API_BASE_URL}/api/shorturl`,
     {
       method: 'POST',
       headers: {
@@ -23,7 +25,7 @@ export async function createShortUrl(token, destinationUrl, customSlug) {
 
 export async function fetchUrlStats(token, slug) {
   const response = await fetch(
-    `${process.env.REACT_APP_API_BASE_URL}/api/shorturl/${slug}/stats`,
+    `${API_BASE_URL}/api/shorturl/${slug}/stats`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -40,7 +42,7 @@ export async function fetchUrlStats(token, slug) {
 
 export async function fetchUrls(token) {
   const response = await fetch(
-    `${process.env.REACT_APP_API_BASE_URL}/api/shorturl?skip=0&take=10`,
+    `${API_BASE_URL}/api/shorturl?skip=0&take=10`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
