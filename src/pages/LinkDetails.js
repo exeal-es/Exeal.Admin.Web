@@ -49,7 +49,7 @@ function LinkDetails() {
       <div className="max-w-2xl mx-auto flex flex-col gap-4">
         <div className="bg-white p-8 pt-6 rounded-xl shadow border border-gray-200 flex flex-col gap-2">
           <div className="flex items-center justify-between mb-1">
-            <span className="font-semibold text-base text-gray-900">{stats.slug}</span>
+            <span className="font-semibold text-base text-gray-900">{stats.title || stats.slug}</span>
           </div>
           <div className="flex items-center gap-2">
             <a

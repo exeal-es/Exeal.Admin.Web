@@ -55,7 +55,7 @@ const UrlList = forwardRef((props, ref) => {
                   to={`/links/${url.slug}/details`}
                   className="font-semibold text-base text-gray-900 hover:underline"
                 >
-                  {url.slug}
+                  {url.title || url.slug}
                 </Link>
                 <div className="flex items-center gap-2 ml-2 shrink-0">
                   <Link
