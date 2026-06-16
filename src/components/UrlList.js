@@ -74,15 +74,12 @@ const UrlList = forwardRef((props, ref) => {
                   )}
                 </button>
               </div>
-              <div className="flex gap-5 items-center text-gray-500 text-sm mt-1">
-                <span className="flex items-center gap-1">
-                  <svg width="16" height="16" fill="#6b7280" className="mr-0.5" viewBox="0 0 16 16"><path d="M2 8a6 6 0 1112 0A6 6 0 012 8zm6-4.5a.75.75 0 01.75.75v2.25h1.5a.75.75 0 010 1.5h-2.25A.75.75 0 017 7.25V4.25A.75.75 0 018 3.5z"></path></svg>
-                  {new Date(url.createdAt).toLocaleDateString()}
-                </span>
-                <span className="flex items-center gap-1 text-blue-600">
-                  <svg width="16" height="16" fill="#2563eb" className="mr-0.5" viewBox="0 0 16 16"><path d="M7.5 1a.5.5 0 01.5.5V3a.5.5 0 01-1 0V1.5A.5.5 0 017.5 1zm4.95 2.05a.5.5 0 01.7.7l-1.06 1.06a.5.5 0 11-.7-.7l1.06-1.06zM15 7.5a.5.5 0 01-.5.5H13a.5.5 0 010-1h1.5a.5.5 0 01.5.5zm-2.05 4.95a.5.5 0 01-.7.7l-1.06-1.06a.5.5 0 11.7-.7l1.06 1.06zM8.5 15a.5.5 0 01-.5-.5V13a.5.5 0 011 0v1.5a.5.5 0 01-.5.5zm-4.95-2.05a.5.5 0 01-.7-.7l1.06-1.06a.5.5 0 11.7.7l-1.06 1.06zM1 8.5a.5.5 0 01.5-.5H3a.5.5 0 010 1H1.5a.5.5 0 01-.5-.5zm2.05-4.95a.5.5 0 01.7-.7l1.06 1.06a.5.5 0 11-.7.7L3.05 3.55z"></path></svg>
-                  {url.destinationUrl}
-                </span>
+              <div className="flex items-center gap-1.5 text-gray-500 text-sm mt-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" className="shrink-0">
+                  <polyline points="15 9 20 14 15 19"/>
+                  <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
+                </svg>
+                <span className="text-gray-800 break-all">{url.destinationUrl}</span>
               </div>
             </li>
           ))}
