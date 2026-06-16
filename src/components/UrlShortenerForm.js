@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { createShortUrl } from '../services/urlService';
 
-function UrlShortenerForm({ onUrlCreated }) {
+function UrlShortenerForm({ onUrlCreated, onClose }) {
   const [destinationUrl, setDestinationUrl] = useState('');
   const [customSlug, setCustomSlug] = useState('');
   const [loading, setLoading] = useState(false);
@@ -19,9 +19,8 @@ function UrlShortenerForm({ onUrlCreated }) {
       await createShortUrl(token, destinationUrl, customSlug);
       setDestinationUrl('');
       setCustomSlug('');
-      if (onUrlCreated) {
-        onUrlCreated();
-      }
+      if (onUrlCreated) onUrlCreated();
+      if (onClose) onClose();
     } catch (err) {
       setError(err.message);
     } finally {
@@ -30,8 +29,20 @@ function UrlShortenerForm({ onUrlCreated }) {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-8 p-8 bg-white rounded-xl shadow border border-gray-200">
-      <h2 className="text-lg font-semibold mb-6 text-gray-900">Create New Short URL</h2>
+    <div className="w-full max-w-xl p-8 bg-white rounded-xl shadow-lg border border-gray-200">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-lg font-semibold text-gray-900">Create New Short URL</h2>
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-gray-400 hover:text-gray-600 transition text-xl leading-none"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+        )}
+      </div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <div>
           <label htmlFor="destinationUrl" className="block font-medium text-gray-700 mb-1">Destination URL:</label>
@@ -57,13 +68,24 @@ function UrlShortenerForm({ onUrlCreated }) {
           />
         </div>
         {error && <div className="text-red-600 mt-2">{error}</div>}
-        <button
-          type="submit"
-          disabled={loading}
-          className="px-4 py-3 bg-blue-600 text-white rounded-md font-semibold transition hover:bg-blue-700 disabled:bg-indigo-200 disabled:cursor-not-allowed"
-        >
-          {loading ? 'Creating...' : 'Create Short URL'}
-        </button>
+        <div className="flex gap-3 justify-end">
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-3 border border-gray-300 text-gray-700 rounded-md font-semibold transition hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+          )}
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-6 py-3 bg-blue-600 text-white rounded-md font-semibold transition hover:bg-blue-700 disabled:bg-indigo-200 disabled:cursor-not-allowed"
+          >
+            {loading ? 'Creating...' : 'Create Short URL'}
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -37,8 +37,7 @@ const UrlList = forwardRef((props, ref) => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 p-0">
-      <h2 className="text-lg font-semibold mb-4 text-gray-900">Your Shortened URLs</h2>
+    <div className="max-w-2xl mx-auto mt-0 p-0">
       {urls.length === 0 ? (
         <p className="text-gray-600">No URLs found</p>
       ) : (
