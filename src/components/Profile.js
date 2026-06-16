@@ -26,7 +26,7 @@ function Profile() {
 
   return (
     <div className="mt-8 p-4">
-      <div className="flex justify-between items-center mb-6">
+      <div className="max-w-2xl mx-auto flex justify-between items-center mb-6">
         <h2 className="text-xl font-semibold text-gray-900">Your Shortened URLs</h2>
         <button
           onClick={() => setIsModalOpen(true)}
