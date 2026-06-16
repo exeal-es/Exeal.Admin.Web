@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { fetchUrlStats } from '../services/urlService';
+import { RedirectIcon } from '../components/icons';
 
 function LinkDetails() {
   const { slug } = useParams();
@@ -41,10 +42,7 @@ function LinkDetails() {
         <div className="bg-white p-8 pt-6 rounded-xl shadow border border-gray-200 flex flex-col gap-2">
           <div className="font-semibold text-base text-gray-900 mb-1">{stats.slug}</div>
           <div className="flex items-center gap-1.5 text-gray-500 text-sm mt-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" className="shrink-0">
-              <polyline points="15 9 20 14 15 19"/>
-              <path d="M4 4v7a4 4 0 0 0 4 4h12"/>
-            </svg>
+            <RedirectIcon />
             <span className="text-gray-800 break-all">{stats.destinationUrl}</span>
           </div>
         </div>
