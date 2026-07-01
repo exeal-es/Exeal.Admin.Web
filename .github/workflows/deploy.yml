@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'frontend/**'
 
 permissions:
   contents: read
@@ -11,6 +13,10 @@ permissions:
 
 env:
   IMAGE_NAME: ghcr.io/exeal-es/urlshortener-web
+
+defaults:
+  run:
+    working-directory: frontend
 
 jobs:
   build-and-deploy:
@@ -49,5 +55,5 @@ jobs:
 
       - name: Trigger Coolify deploy
         run: |
-          curl -X GET "${{ secrets.COOLIFY_WEBHOOK }}" \
+          curl -X GET "${{ secrets.COOLIFY_WEBHOOK_FRONTEND }}" \
             -H "Authorization: Bearer ${{ secrets.COOLIFY_API_TOKEN }}"
